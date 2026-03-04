@@ -1,0 +1,456 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+/* ===== GLOBAL STYLES ===== */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+html {
+    scroll-behavior: smooth;
+    scroll-padding-top: 6rem;
+    scroll-snap-type: y proximity;
+}
+
+body {
+    font-family: 'Inter', sans-serif;
+    background: #0A1628;
+    color: #F8FAFC;
+    overflow-x: hidden;
+}
+
+/* ===== SCROLL SNAP SECTIONS ===== */
+.snap-section {
+    scroll-snap-align: start;
+    scroll-snap-stop: normal;
+    scroll-margin-top: 5rem;
+}
+
+/* ===== CUSTOM SCROLLBAR ===== */
+::-webkit-scrollbar {
+    width: 8px;
+}
+
+::-webkit-scrollbar-track {
+    background: #0A1628;
+}
+
+::-webkit-scrollbar-thumb {
+    background: linear-gradient(180deg, #D4A843, #2563EB);
+    border-radius: 4px;
+}
+
+/* ===== GRADIENT TEXT ===== */
+.gradient-text {
+    background: linear-gradient(135deg, #D4A843 0%, #E8C564 50%, #D4A843 100%);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+}
+
+.gradient-text-blue {
+    background: linear-gradient(135deg, #2563EB 0%, #60A5FA 50%, #2563EB 100%);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+}
+
+/* ===== GLASSMORPHISM ===== */
+.glass {
+    background: rgba(255, 255, 255, 0.05);
+    backdrop-filter: blur(20px);
+    -webkit-backdrop-filter: blur(20px);
+    border: 1px solid rgba(255, 255, 255, 0.08);
+}
+
+.glass-gold {
+    background: rgba(212, 168, 67, 0.08);
+    backdrop-filter: blur(20px);
+    -webkit-backdrop-filter: blur(20px);
+    border: 1px solid rgba(212, 168, 67, 0.2);
+}
+
+/* ===== BOARDING PASS CARD ===== */
+.boarding-pass {
+    position: relative;
+    background: linear-gradient(135deg, rgba(15, 30, 54, 0.9) 0%, rgba(21, 39, 68, 0.9) 100%);
+    border: 1px solid rgba(212, 168, 67, 0.15);
+    border-radius: 16px;
+    overflow: hidden;
+}
+
+.boarding-pass::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    height: 4px;
+    background: linear-gradient(90deg, #D4A843, #2563EB, #D4A843);
+}
+
+.boarding-pass-tear {
+    position: relative;
+}
+
+.boarding-pass-tear::after {
+    content: '';
+    position: absolute;
+    left: -8px;
+    right: -8px;
+    height: 2px;
+    border-top: 2px dashed rgba(212, 168, 67, 0.3);
+}
+
+/* ===== HOLOGRAPHIC SHIMMER ===== */
+.holographic {
+    position: relative;
+    overflow: hidden;
+}
+
+.holographic::after {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: -100%;
+    width: 100%;
+    height: 100%;
+    background: linear-gradient(90deg,
+            transparent 0%,
+            rgba(212, 168, 67, 0.1) 45%,
+            rgba(37, 99, 235, 0.1) 55%,
+            transparent 100%);
+    transition: left 0.6s ease;
+}
+
+.holographic:hover::after {
+    left: 100%;
+}
+
+/* ===== STAMP EFFECT ===== */
+.visa-stamp {
+    border: 3px solid #22c55e;
+    border-radius: 8px;
+    color: #22c55e;
+    padding: 8px 16px;
+    font-weight: 800;
+    text-transform: uppercase;
+    letter-spacing: 3px;
+    transform: rotate(-15deg);
+    opacity: 0.85;
+}
+
+/* ===== FLYING PLANES BACKGROUND ===== */
+.flight-path-1 {
+    animation: fly-curve-1 25s linear infinite;
+}
+
+.flight-path-2 {
+    animation: fly-curve-2 35s linear infinite;
+    animation-delay: -8s;
+}
+
+.flight-path-3 {
+    animation: fly-curve-3 30s linear infinite;
+    animation-delay: -15s;
+}
+
+.flight-path-4 {
+    animation: fly-curve-4 40s linear infinite;
+    animation-delay: -20s;
+}
+
+/* Dotted trail animations */
+.flight-trail {
+    opacity: 0;
+}
+
+.flight-trail-1 {
+    animation: trail-fade 25s linear infinite;
+}
+
+.flight-trail-2 {
+    animation: trail-fade 35s linear infinite;
+    animation-delay: -8s;
+}
+
+.flight-trail-3 {
+    animation: trail-fade 30s linear infinite;
+    animation-delay: -15s;
+}
+
+@keyframes fly-curve-1 {
+    0% {
+        left: -5%;
+        top: 15%;
+        transform: rotate(-10deg);
+    }
+
+    25% {
+        left: 25%;
+        top: 5%;
+        transform: rotate(-25deg);
+    }
+
+    50% {
+        left: 55%;
+        top: 20%;
+        transform: rotate(-5deg);
+    }
+
+    75% {
+        left: 80%;
+        top: 8%;
+        transform: rotate(-20deg);
+    }
+
+    100% {
+        left: 105%;
+        top: 12%;
+        transform: rotate(-15deg);
+    }
+}
+
+@keyframes fly-curve-2 {
+    0% {
+        left: 105%;
+        top: 40%;
+        transform: rotate(170deg);
+    }
+
+    25% {
+        left: 75%;
+        top: 30%;
+        transform: rotate(155deg);
+    }
+
+    50% {
+        left: 45%;
+        top: 45%;
+        transform: rotate(175deg);
+    }
+
+    75% {
+        left: 20%;
+        top: 35%;
+        transform: rotate(160deg);
+    }
+
+    100% {
+        left: -5%;
+        top: 38%;
+        transform: rotate(170deg);
+    }
+}
+
+@keyframes fly-curve-3 {
+    0% {
+        left: -5%;
+        top: 65%;
+        transform: rotate(-15deg);
+    }
+
+    20% {
+        left: 15%;
+        top: 55%;
+        transform: rotate(-30deg);
+    }
+
+    40% {
+        left: 35%;
+        top: 70%;
+        transform: rotate(-5deg);
+    }
+
+    60% {
+        left: 60%;
+        top: 58%;
+        transform: rotate(-20deg);
+    }
+
+    80% {
+        left: 82%;
+        top: 68%;
+        transform: rotate(-10deg);
+    }
+
+    100% {
+        left: 105%;
+        top: 60%;
+        transform: rotate(-18deg);
+    }
+}
+
+@keyframes fly-curve-4 {
+    0% {
+        left: 105%;
+        top: 80%;
+        transform: rotate(165deg);
+    }
+
+    30% {
+        left: 65%;
+        top: 85%;
+        transform: rotate(180deg);
+    }
+
+    60% {
+        left: 30%;
+        top: 75%;
+        transform: rotate(160deg);
+    }
+
+    100% {
+        left: -5%;
+        top: 82%;
+        transform: rotate(172deg);
+    }
+}
+
+@keyframes trail-fade {
+    0% {
+        opacity: 0;
+        stroke-dashoffset: 0;
+    }
+
+    5% {
+        opacity: 0.04;
+    }
+
+    50% {
+        opacity: 0.06;
+    }
+
+    95% {
+        opacity: 0.04;
+    }
+
+    100% {
+        opacity: 0;
+        stroke-dashoffset: -200;
+    }
+}
+
+/* ===== GLOW BUTTON ===== */
+.btn-glow {
+    position: relative;
+    background: linear-gradient(135deg, #D4A843 0%, #B8902E 100%);
+    color: #0A1628;
+    font-weight: 700;
+    padding: 14px 32px;
+    border-radius: 12px;
+    border: none;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    overflow: hidden;
+}
+
+.btn-glow::before {
+    content: '';
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    width: 0;
+    height: 0;
+    background: rgba(255, 255, 255, 0.2);
+    border-radius: 50%;
+    transform: translate(-50%, -50%);
+    transition: width 0.6s ease, height 0.6s ease;
+}
+
+.btn-glow:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 8px 30px rgba(212, 168, 67, 0.4);
+}
+
+.btn-glow:hover::before {
+    width: 300px;
+    height: 300px;
+}
+
+/* ===== PROGRESS BAR ===== */
+.visa-progress {
+    background: rgba(255, 255, 255, 0.05);
+    border-bottom: 1px solid rgba(255, 255, 255, 0.08);
+}
+
+.visa-progress-fill {
+    background: linear-gradient(90deg, #D4A843, #2563EB);
+    transition: width 0.3s ease;
+}
+
+/* ===== SECTION DIVIDER ===== */
+.section-divider {
+    height: 1px;
+    background: linear-gradient(90deg, transparent, rgba(212, 168, 67, 0.3), transparent);
+    margin: 0 auto;
+    max-width: 600px;
+}
+
+/* ===== BARCODE ===== */
+.barcode {
+    display: flex;
+    gap: 2px;
+    align-items: end;
+    height: 30px;
+    opacity: 0.2;
+}
+
+.barcode span {
+    display: block;
+    width: 2px;
+    background: #D4A843;
+}
+
+/* ===== HERO CARD ===== */
+.hero-card {
+    box-shadow:
+        0 0 0 1px rgba(212, 168, 67, 0.1),
+        0 25px 60px -15px rgba(0, 0, 0, 0.5),
+        0 0 40px rgba(212, 168, 67, 0.05),
+        inset 0 1px 0 rgba(255, 255, 255, 0.05);
+    transition: transform 0.4s ease, box-shadow 0.4s ease;
+}
+
+.hero-card:hover {
+    transform: translateY(-4px);
+    box-shadow:
+        0 0 0 1px rgba(212, 168, 67, 0.15),
+        0 30px 70px -15px rgba(0, 0, 0, 0.6),
+        0 0 50px rgba(212, 168, 67, 0.08),
+        inset 0 1px 0 rgba(255, 255, 255, 0.05);
+}
+
+/* Shimmer sweep across the card */
+.hero-card::after {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: -80%;
+    width: 60%;
+    height: 100%;
+    background: linear-gradient(105deg,
+            transparent 40%,
+            rgba(212, 168, 67, 0.06) 45%,
+            rgba(212, 168, 67, 0.12) 50%,
+            rgba(212, 168, 67, 0.06) 55%,
+            transparent 60%);
+    animation: card-shimmer 6s ease-in-out infinite;
+    pointer-events: none;
+    z-index: 30;
+}
+
+@keyframes card-shimmer {
+
+    0%,
+    100% {
+        left: -80%;
+    }
+
+    50% {
+        left: 120%;
+    }
+}
